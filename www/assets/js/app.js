@@ -9,32 +9,32 @@ document.addEventListener('DOMContentLoaded', () => {
             settings_lang: "Language",
             settings_theme: "Dark Theme",
             settings_pin: "App Lock (PIN)",
-                          settings_backup: "Backup & Restore",
-                          settings_clear: "Clear All Data",
-                          stats_moods: "Mood Overview",
-                          stats_calendar: "Calendar",
-                          otd_title: "On This Day",
-                          pin_enter: "Enter PIN",
-                          pin_create: "Create PIN",
-                          btn_cancel: "Cancel",
-                          btn_save: "Save",
-                          btn_update: "Update",
-                          btn_export: "Export Data (JSON)",
-                          btn_import: "Import Data",
-                          modal_new: "New Entry",
-                          modal_edit: "Edit Entry",
-                          ph_title: "Title of the day...",
-                          ph_content: "Write your thoughts...",
-                          ph_tags: "Tags (comma separated)...",
-                          ph_search: "Search memories...",
-                          confirm_delete: "Are you sure you want to delete this memory?",
-                          confirm_clear: "This will delete ALL your entries. Are you sure?",
-                          confirm_import: "Merge new data with existing entries?",
-                          alert_exported: "Backup downloaded!",
-                          alert_imported: "Data imported successfully!",
-                          alert_invalid: "Invalid file format.",
-                          prompts: ["What made you smile today?", "What is a lesson you learned recently?", "Describe a moment of peace."],
-                          moods: { happy: "Happy", calm: "Calm", sad: "Sad", excited: "Excited" }
+            settings_backup: "Backup & Restore",
+            settings_clear: "Clear All Data",
+            stats_moods: "Mood Overview",
+            stats_calendar: "Calendar",
+            otd_title: "On This Day",
+            pin_enter: "Enter PIN",
+            pin_create: "Create PIN",
+            btn_cancel: "Cancel",
+            btn_save: "Save",
+            btn_update: "Update",
+            btn_export: "Export Data (JSON)",
+            btn_import: "Import Data",
+            modal_new: "New Entry",
+            modal_edit: "Edit Entry",
+            ph_title: "Title of the day...",
+            ph_content: "Write your thoughts...",
+            ph_tags: "Tags (comma separated)...",
+            ph_search: "Search memories...",
+            confirm_delete: "Are you sure you want to delete this memory?",
+            confirm_clear: "This will delete ALL your entries. Are you sure?",
+            confirm_import: "Merge new data with existing entries?",
+            alert_exported: "Backup downloaded!",
+            alert_imported: "Data imported successfully!",
+            alert_invalid: "Invalid file format.",
+            prompts: ["What made you smile today?", "What is a lesson you learned recently?", "Describe a moment of peace."],
+            moods: { happy: "Happy", calm: "Calm", sad: "Sad", excited: "Excited" }
         },
         tr: {
             app_title: "Vessel.",
@@ -43,32 +43,32 @@ document.addEventListener('DOMContentLoaded', () => {
             settings_lang: "Dil",
             settings_theme: "Karanlık Mod",
             settings_pin: "Uygulama Kilidi (PIN)",
-                          settings_backup: "Yedekleme",
-                          settings_clear: "Tüm Verileri Sil",
-                          stats_moods: "Ruh Hali Özeti",
-                          stats_calendar: "Takvim",
-                          otd_title: "Tarihte Bugün",
-                          pin_enter: "PIN Girin",
-                          pin_create: "PIN Oluştur",
-                          btn_cancel: "İptal",
-                          btn_save: "Kaydet",
-                          btn_update: "Güncelle",
-                          btn_export: "Veriyi İndir (JSON)",
-                          btn_import: "Veri Yükle",
-                          modal_new: "Yeni Anı",
-                          modal_edit: "Anıyı Düzenle",
-                          ph_title: "Günün başlığı...",
-                          ph_content: "Düşüncelerini yaz...",
-                          ph_tags: "Etiketler (virgülle ayır)...",
-                          ph_search: "Anılarda ara...",
-                          confirm_delete: "Bu anıyı silmek istediğine emin misin?",
-                          confirm_clear: "TÜM anıların silinecek. Emin misin?",
-                          confirm_import: "Veriler birleştirilsin mi?",
-                          alert_exported: "Yedek indirildi!",
-                          alert_imported: "Veri yüklendi!",
-                          alert_invalid: "Geçersiz dosya.",
-                          prompts: ["Bugün seni ne gülümsetti?", "Son zamanlarda öğrendiğin bir ders?", "Huzurlu bir anı tarif et."],
-                          moods: { happy: "Mutlu", calm: "Sakin", sad: "Üzgün", excited: "Heyecanlı" }
+            settings_backup: "Yedekleme",
+            settings_clear: "Tüm Verileri Sil",
+            stats_moods: "Ruh Hali Özeti",
+            stats_calendar: "Takvim",
+            otd_title: "Tarihte Bugün",
+            pin_enter: "PIN Girin",
+            pin_create: "PIN Oluştur",
+            btn_cancel: "İptal",
+            btn_save: "Kaydet",
+            btn_update: "Güncelle",
+            btn_export: "Veriyi İndir (JSON)",
+            btn_import: "Veri Yükle",
+            modal_new: "Yeni Anı",
+            modal_edit: "Anıyı Düzenle",
+            ph_title: "Günün başlığı...",
+            ph_content: "Düşüncelerini yaz...",
+            ph_tags: "Etiketler (virgülle ayır)...",
+            ph_search: "Anılarda ara...",
+            confirm_delete: "Bu anıyı silmek istediğine emin misin?",
+            confirm_clear: "TÜM anıların silinecek. Emin misin?",
+            confirm_import: "Veriler birleştirilsin mi?",
+            alert_exported: "Yedek indirildi!",
+            alert_imported: "Veri yüklendi!",
+            alert_invalid: "Geçersiz dosya.",
+            prompts: ["Bugün seni ne gülümsetti?", "Son zamanlarda öğrendiğin bir ders?", "Huzurlu bir anı tarif et."],
+            moods: { happy: "Mutlu", calm: "Sakin", sad: "Üzgün", excited: "Heyecanlı" }
         },
         es: {
             app_title: "Vessel.",
@@ -77,32 +77,32 @@ document.addEventListener('DOMContentLoaded', () => {
             settings_lang: "Idioma",
             settings_theme: "Modo Oscuro",
             settings_pin: "Bloqueo de App (PIN)",
-                          settings_backup: "Respaldo",
-                          settings_clear: "Borrar Todo",
-                          stats_moods: "Resumen de Ánimo",
-                          stats_calendar: "Calendario",
-                          otd_title: "Un Día Como Hoy",
-                          pin_enter: "Ingresar PIN",
-                          pin_create: "Crear PIN",
-                          btn_cancel: "Cancelar",
-                          btn_save: "Guardar",
-                          btn_update: "Actualizar",
-                          btn_export: "Exportar Datos",
-                          btn_import: "Importar Datos",
-                          modal_new: "Nueva Entrada",
-                          modal_edit: "Editar Entrada",
-                          ph_title: "Título del día...",
-                          ph_content: "Escribe tus pensamientos...",
-                          ph_tags: "Etiquetas...",
-                          ph_search: "Buscar recuerdos...",
-                          confirm_delete: "¿Borrar este recuerdo?",
-                          confirm_clear: "Esto borrará TODO. ¿Seguro?",
-                          confirm_import: "¿Fusionar datos?",
-                          alert_exported: "¡Respaldo descargado!",
-                          alert_imported: "¡Datos importados!",
-                          alert_invalid: "Archivo inválido.",
-                          prompts: ["¿Qué te hizo sonreír hoy?", "¿Qué lección aprendiste?", "Describe un momento de paz."],
-                          moods: { happy: "Feliz", calm: "Calmado", sad: "Triste", excited: "Emocionado" }
+            settings_backup: "Respaldo",
+            settings_clear: "Borrar Todo",
+            stats_moods: "Resumen de Ánimo",
+            stats_calendar: "Calendario",
+            otd_title: "Un Día Como Hoy",
+            pin_enter: "Ingresar PIN",
+            pin_create: "Crear PIN",
+            btn_cancel: "Cancelar",
+            btn_save: "Guardar",
+            btn_update: "Actualizar",
+            btn_export: "Exportar Datos",
+            btn_import: "Importar Datos",
+            modal_new: "Nueva Entrada",
+            modal_edit: "Editar Entrada",
+            ph_title: "Título del día...",
+            ph_content: "Escribe tus pensamientos...",
+            ph_tags: "Etiquetas...",
+            ph_search: "Buscar recuerdos...",
+            confirm_delete: "¿Borrar este recuerdo?",
+            confirm_clear: "Esto borrará TODO. ¿Seguro?",
+            confirm_import: "¿Fusionar datos?",
+            alert_exported: "¡Respaldo descargado!",
+            alert_imported: "¡Datos importados!",
+            alert_invalid: "Archivo inválido.",
+            prompts: ["¿Qué te hizo sonreír hoy?", "¿Qué lección aprendiste?", "Describe un momento de paz."],
+            moods: { happy: "Feliz", calm: "Calmado", sad: "Triste", excited: "Emocionado" }
         }
     };
 
@@ -113,55 +113,58 @@ document.addEventListener('DOMContentLoaded', () => {
     let editingId = null;
     let currentCalendarDate = new Date();
     let pinBuffer = "";
+    let showFavoritesOnly = false;
 
     // --- DOM ELEMENTS ---
     const app = {
         navBtns: document.querySelectorAll('.nav-btn[data-target]'),
-                          views: document.querySelectorAll('.view'),
+        views: document.querySelectorAll('.view'),
 
-                          // Modal
-                          addBtn: document.getElementById('add-entry-btn'),
-                          modal: document.getElementById('editor-modal'),
-                          closeModalBtn: document.getElementById('close-modal'),
-                          saveBtn: document.getElementById('save-entry'),
-                          modalTitle: document.getElementById('modal-title'),
-                          promptBtn: document.getElementById('prompt-btn'),
+        // Modal
+        addBtn: document.getElementById('add-entry-btn'),
+        modal: document.getElementById('editor-modal'),
+        closeModalBtn: document.getElementById('close-modal'),
+        saveBtn: document.getElementById('save-entry'),
+        modalTitle: document.getElementById('modal-title'),
+        promptBtn: document.getElementById('prompt-btn'),
 
-                          // Inputs
-                          inputTitle: document.getElementById('entry-title'),
-                          inputContent: document.getElementById('entry-content'),
-                          inputTags: document.getElementById('entry-tags'),
-                          searchInput: document.getElementById('search-input'),
-                          dateDisplay: document.getElementById('current-date'),
+        // Inputs
+        inputTitle: document.getElementById('entry-title'),
+        inputContent: document.getElementById('entry-content'),
+        inputTags: document.getElementById('entry-tags'),
+        searchInput: document.getElementById('search-input'),
+        filterFavBtn: document.getElementById('filter-fav-btn'),
+        dateDisplay: document.getElementById('current-date'),
+        wordCount: document.getElementById('word-count'),
 
-                          // Settings
-                          langSelect: document.getElementById('lang-select'),
-                          themeSwitch: document.getElementById('theme-switch'),
-                          pinSwitch: document.getElementById('pin-switch'),
-                          clearDataBtn: document.getElementById('clear-data-btn'),
-                          exportBtn: document.getElementById('export-btn'),
-                          importBtn: document.getElementById('import-btn'),
-                          importFile: document.getElementById('import-file'),
+        // Settings
+        langSelect: document.getElementById('lang-select'),
+        themeSwitch: document.getElementById('theme-switch'),
+        pinSwitch: document.getElementById('pin-switch'),
+        clearDataBtn: document.getElementById('clear-data-btn'),
+        exportBtn: document.getElementById('export-btn'),
+        importBtn: document.getElementById('import-btn'),
+        importFile: document.getElementById('import-file'),
 
-                          // UI
-                          entryList: document.getElementById('entry-list'),
-                          emptyState: document.getElementById('empty-state'),
-                          streakBadge: document.getElementById('streak-badge'),
-                          streakCount: document.getElementById('streak-count'),
-                          otdContainer: document.getElementById('on-this-day-container'),
+        // UI
+        entryList: document.getElementById('entry-list'),
+        emptyState: document.getElementById('empty-state'),
+        streakBadge: document.getElementById('streak-badge'),
+        streakCount: document.getElementById('streak-count'),
+        otdContainer: document.getElementById('on-this-day-container'),
 
-                          // Stats
-                          moodPie: document.getElementById('mood-pie-chart'),
-                          moodLegend: document.getElementById('mood-legend'),
-                          calGrid: document.getElementById('calendar-grid'),
-                          calMonthYear: document.getElementById('calendar-month-year'),
-                          prevMonthBtn: document.getElementById('prev-month'),
-                          nextMonthBtn: document.getElementById('next-month'),
+        // Stats
+        moodPie: document.getElementById('mood-pie-chart'),
+        moodLegend: document.getElementById('mood-legend'),
+        calGrid: document.getElementById('calendar-grid'),
+        calMonthYear: document.getElementById('calendar-month-year'),
+        prevMonthBtn: document.getElementById('prev-month'),
+        nextMonthBtn: document.getElementById('next-month'),
 
-                          // PIN
-                          pinOverlay: document.getElementById('pin-lock-overlay'),
-                          pinDots: document.getElementById('pin-dots').querySelectorAll('span'),
-                          pinKeypad: document.getElementById('pin-keypad')
+        // PIN
+        pinOverlay: document.getElementById('pin-lock-overlay'),
+        pinDots: document.getElementById('pin-dots').querySelectorAll('span'),
+        pinKeypad: document.getElementById('pin-keypad')
     };
 
     // --- INITIALIZATION ---
@@ -250,15 +253,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const texts = i18n[lang];
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
-            if(texts[key]) el.textContent = texts[key];
+            if (texts[key]) el.textContent = texts[key];
         });
-            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-                const key = el.getAttribute('data-i18n-placeholder');
-                if(texts[key]) el.placeholder = texts[key];
-            });
-                updateDateDisplay();
-                renderCalendar();
-                renderMoodChart(); // Re-render charts to update labels
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+            const key = el.getAttribute('data-i18n-placeholder');
+            if (texts[key]) el.placeholder = texts[key];
+        });
+        updateDateDisplay();
+        renderCalendar();
+        renderMoodChart(); // Re-render charts to update labels
     }
 
     function updateDateDisplay() {
@@ -280,16 +283,16 @@ document.addEventListener('DOMContentLoaded', () => {
     function switchView(targetId) {
         document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
         const activeBtn = document.querySelector(`.nav-btn[data-target="${targetId}"]`);
-        if(activeBtn) activeBtn.classList.add('active');
+        if (activeBtn) activeBtn.classList.add('active');
 
         app.views.forEach(view => {
             view.classList.remove('active');
-            if(view.id === `view-${targetId}`) view.classList.add('active');
+            if (view.id === `view-${targetId}`) view.classList.add('active');
         });
 
         // Specific refreshes
-        if(targetId === 'stats') renderMoodChart();
-        if(targetId === 'calendar') renderCalendar();
+        if (targetId === 'stats') renderMoodChart();
+        if (targetId === 'calendar') renderCalendar();
     }
 
     // --- CORE LOGIC (CRUD) ---
@@ -310,6 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
             app.modalTitle.textContent = i18n[settings.lang].modal_new;
             app.saveBtn.textContent = i18n[settings.lang].btn_save;
         }
+        updateWordCount();
     }
 
     function saveEntry() {
@@ -327,15 +331,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 entries[index].content = content;
                 entries[index].mood = mood;
                 entries[index].tags = tags;
+                // Preserve existing favorite status if any
+                if (entries[index].isFavorite === undefined) entries[index].isFavorite = false;
             }
         } else {
             const newEntry = {
                 id: Date.now(),
-                          title: title || "Untitled",
-                          content: content,
-                          mood: mood,
-                          tags: tags,
-                          date: new Date().toISOString()
+                title: title || "Untitled",
+                content: content,
+                mood: mood,
+                tags: tags,
+                date: new Date().toISOString(),
+                isFavorite: false
             };
             entries.unshift(newEntry);
         }
@@ -347,7 +354,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function deleteEntry(id) {
-        if(confirm(i18n[settings.lang].confirm_delete)) {
+        if (confirm(i18n[settings.lang].confirm_delete)) {
             entries = entries.filter(entry => entry.id !== Number(id));
             updateStorage();
             renderEntries();
@@ -366,13 +373,45 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('mood-1').checked = true;
     }
 
+    function toggleFavorite(id) {
+        const index = entries.findIndex(e => e.id === Number(id));
+        if (index !== -1) {
+            entries[index].isFavorite = !entries[index].isFavorite;
+            updateStorage();
+            renderEntries();
+        }
+    }
+
+    // --- MARKDOWN & WORD COUNT ---
+    function parseMarkdown(text) {
+        if (!text) return '';
+        let html = escapeHtml(text);
+
+        // Bold (**text**)
+        html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        // Italic (*text*)
+        html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+        // Lists (- item)
+        html = html.replace(/^- (.*$)/gim, '<ul><li>$1</li></ul>');
+        // Fix nested lists (naive approach: merge adjacent uls)
+        html = html.replace(/<\/ul>\s*<ul>/g, '');
+
+        return html;
+    }
+
+    function updateWordCount() {
+        const text = app.inputContent.value.trim();
+        const count = text ? text.split(/\s+/).length : 0;
+        app.wordCount.textContent = `${count} words`;
+    }
+
     // --- STATS: MOOD CHART (Localized) ---
     function renderMoodChart() {
         const counts = { happy: 0, calm: 0, sad: 0, excited: 0 };
-        entries.forEach(e => counts[e.mood] ? counts[e.mood]++ : counts[e.mood]=1);
+        entries.forEach(e => counts[e.mood] ? counts[e.mood]++ : counts[e.mood] = 1);
 
         const total = entries.length;
-        if(total === 0) {
+        if (total === 0) {
             app.moodPie.style.background = '#eee';
             app.moodLegend.innerHTML = '';
             return;
@@ -397,7 +436,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 legendHtml += `
                 <div class="legend-item">
                 <div class="legend-color" style="background: ${colors[mood]}"></div>
-                <span>${moodNames[mood]} (${Math.round((count/total)*100)}%)</span>
+                <span>${moodNames[mood]} (${Math.round((count / total) * 100)}%)</span>
                 </div>
                 `;
             }
@@ -417,10 +456,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const daysInMonth = new Date(year, month + 1, 0).getDate();
 
         app.calGrid.innerHTML = '';
-        for(let i=0; i<firstDay; i++) app.calGrid.innerHTML += `<div></div>`;
+        for (let i = 0; i < firstDay; i++) app.calGrid.innerHTML += `<div></div>`;
 
-        for(let day=1; day<=daysInMonth; day++) {
-            const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+        for (let day = 1; day <= daysInMonth; day++) {
+            const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
             const dayEntries = entries.filter(e => e.date.startsWith(dateStr));
             let classes = 'cal-day';
             if (dayEntries.length > 0) classes += ` active mood-${dayEntries[0].mood}`;
@@ -433,7 +472,7 @@ document.addEventListener('DOMContentLoaded', () => {
             app.streakBadge.classList.add('hidden');
             return;
         }
-        const sorted = [...entries].sort((a,b) => new Date(b.date) - new Date(a.date));
+        const sorted = [...entries].sort((a, b) => new Date(b.date) - new Date(a.date));
         const today = new Date().toDateString();
         let streak = 0;
         let checkDate = new Date();
@@ -460,8 +499,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const match = entries.find(e => {
             const d = new Date(e.date);
             return d.getDate() === today.getDate() &&
-            d.getMonth() === today.getMonth() &&
-            d.getFullYear() !== today.getFullYear();
+                d.getMonth() === today.getMonth() &&
+                d.getFullYear() !== today.getFullYear();
         });
 
         if (match) {
@@ -482,20 +521,30 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- SEARCH & HELPERS ---
     function handleSearch(e) {
         const term = e.target.value.toLowerCase();
-        document.querySelectorAll('#entry-list .journal-card').forEach(card => {
-            const title = card.querySelector('.card-title').textContent.toLowerCase();
-            const content = card.querySelector('.card-preview').textContent.toLowerCase();
-            const tags = card.querySelector('.card-tags') ? card.querySelector('.card-tags').textContent.toLowerCase() : '';
-            card.style.display = (title.includes(term) || content.includes(term) || tags.includes(term)) ? 'block' : 'none';
-        });
+        renderEntries(term);
     }
 
-    function renderEntries() {
+    function renderEntries(searchTerm = '') {
         app.entryList.innerHTML = '';
-        if (entries.length === 0) app.emptyState.classList.remove('hidden');
+
+        let filtered = entries;
+
+        if (showFavoritesOnly) {
+            filtered = filtered.filter(e => e.isFavorite);
+        }
+
+        if (searchTerm) {
+            filtered = filtered.filter(e =>
+                e.title.toLowerCase().includes(searchTerm) ||
+                e.content.toLowerCase().includes(searchTerm) ||
+                (e.tags && e.tags.some(t => t.toLowerCase().includes(searchTerm)))
+            );
+        }
+
+        if (filtered.length === 0) app.emptyState.classList.remove('hidden');
         else {
             app.emptyState.classList.add('hidden');
-            entries.forEach(entry => app.entryList.appendChild(createCardElement(entry)));
+            filtered.forEach(entry => app.entryList.appendChild(createCardElement(entry)));
         }
     }
 
@@ -514,7 +563,11 @@ document.addEventListener('DOMContentLoaded', () => {
             tagsHtml = `<div class="card-tags">${entry.tags.map(tag => `<span class="tag-badge">#${escapeHtml(tag)}</span>`).join('')}</div>`;
         }
 
+        const favIconClass = entry.isFavorite ? 'ri-star-fill' : 'ri-star-line';
+        const favBtnClass = entry.isFavorite ? 'star-btn active' : 'star-btn';
+
         article.innerHTML = `
+        <button class="${favBtnClass}" title="Favorite"><i class="${favIconClass}"></i></button>
         <div class="card-header">
         <span class="card-date"><span class="day">${day}</span><span class="month">${month}</span></span>
         <div class="card-actions">
@@ -524,7 +577,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
         <div class="card-body">
         <h3 class="card-title">${escapeHtml(entry.title)}</h3>
-        <p class="card-preview">${escapeHtml(entry.content)}</p>
+        <div class="card-preview">${parseMarkdown(entry.content)}</div>
         ${tagsHtml}
         </div>
         `;
@@ -540,10 +593,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function exportData() {
         const dataStr = JSON.stringify(entries, null, 2);
-        const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+        const dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
         const linkElement = document.createElement('a');
         linkElement.setAttribute('href', dataUri);
-        linkElement.setAttribute('download', `vessel_backup_${new Date().toISOString().slice(0,10)}.json`);
+        linkElement.setAttribute('download', `vessel_backup_${new Date().toISOString().slice(0, 10)}.json`);
         linkElement.click();
         alert(i18n[settings.lang].alert_exported);
     }
@@ -553,7 +606,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!file) return;
         if (confirm(i18n[settings.lang].confirm_import)) {
             const reader = new FileReader();
-            reader.onload = function(e) {
+            reader.onload = function (e) {
                 try {
                     const imported = JSON.parse(e.target.result);
                     if (Array.isArray(imported)) {
@@ -586,6 +639,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         app.searchInput.addEventListener('input', handleSearch);
+        app.filterFavBtn.addEventListener('click', () => {
+            showFavoritesOnly = !showFavoritesOnly;
+            app.filterFavBtn.classList.toggle('active', showFavoritesOnly);
+            renderEntries(app.searchInput.value);
+        });
+
+        app.inputContent.addEventListener('input', updateWordCount);
+
         app.langSelect.addEventListener('change', (e) => applyLanguage(e.target.value));
         app.themeSwitch.addEventListener('change', (e) => applyTheme(e.target.checked ? 'dark' : 'light'));
 
@@ -609,19 +670,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.addEventListener('click', (e) => {
             const card = e.target.closest('.journal-card');
-            if(card) {
-                if(e.target.closest('.delete-btn')) {
+            if (card) {
+                if (e.target.closest('.delete-btn')) {
                     e.stopPropagation();
                     deleteEntry(card.dataset.id);
+                } else if (e.target.closest('.star-btn')) {
+                    e.stopPropagation();
+                    toggleFavorite(card.dataset.id);
                 } else {
                     const entry = entries.find(en => en.id === Number(card.dataset.id));
-                    if(entry) openModal(entry);
+                    if (entry) openModal(entry);
                 }
             }
         });
 
         app.clearDataBtn.addEventListener('click', () => {
-            if(confirm(i18n[settings.lang].confirm_clear)) {
+            if (confirm(i18n[settings.lang].confirm_clear)) {
                 entries = [];
                 updateStorage();
                 renderEntries();

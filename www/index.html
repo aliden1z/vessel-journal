@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -13,7 +14,9 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,500;0,600;1,400&display=swap"
+        rel="stylesheet">
 
     <!-- Styles -->
     <link rel="stylesheet" href="assets/css/main.css">
@@ -21,6 +24,7 @@
     <!-- Icons -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 </head>
+
 <body>
 
     <!-- PIN LOCK OVERLAY -->
@@ -35,7 +39,8 @@
                 <button>1</button><button>2</button><button>3</button>
                 <button>4</button><button>5</button><button>6</button>
                 <button>7</button><button>8</button><button>9</button>
-                <button class="empty"></button><button>0</button><button class="backspace"><i class="ri-delete-back-2-line"></i></button>
+                <button class="empty"></button><button>0</button><button class="backspace"><i
+                        class="ri-delete-back-2-line"></i></button>
             </div>
         </div>
     </div>
@@ -63,7 +68,10 @@
                 <!-- Search -->
                 <div class="search-wrapper">
                     <i class="ri-search-line search-icon"></i>
-                    <input type="text" id="search-input" class="search-input" placeholder="Search memories..." data-i18n-placeholder="ph_search">
+                    <input type="text" id="search-input" class="search-input" placeholder="Search memories..."
+                        data-i18n-placeholder="ph_search">
+                    <button id="filter-fav-btn" class="icon-btn" title="Show Favorites Only"><i
+                            class="ri-star-line"></i></button>
                 </div>
 
                 <!-- Entry List -->
@@ -76,6 +84,7 @@
                         <p data-i18n="home_empty">Your story begins here...</p>
                     </div>
                 </div>
+
             </section>
 
             <!-- VIEW: CALENDAR (New Split View) -->
@@ -166,8 +175,7 @@
                         <span data-i18n="settings_clear">Clear All Data</span>
                     </button>
 
-                    <!-- Reverted Style Version Label -->
-                    <div class="app-version">Vessel Journal v0.1 by aliden1z</div>
+                    <div class="app-version">Vessel Journal v1.0.1</div>
                 </div>
             </section>
 
@@ -185,7 +193,11 @@
                 <div class="modal-body">
                     <div class="editor-meta">
                         <div class="editor-date" id="current-date"></div>
-                        <button id="prompt-btn" class="prompt-btn" title="Generate Prompt"><i class="ri-magic-line"></i></button>
+                        <div class="meta-right">
+                            <span id="word-count" class="word-count">0 words</span>
+                            <button id="prompt-btn" class="prompt-btn" title="Generate Prompt"><i
+                                    class="ri-magic-line"></i></button>
+                        </div>
                     </div>
 
                     <div class="mood-selector">
@@ -199,14 +211,17 @@
                         <label for="mood-4" class="mood-btn"><i class="ri-emotion-line"></i></label>
                     </div>
 
-                    <input type="text" id="entry-title" class="editor-input title" placeholder="Title..." data-i18n-placeholder="ph_title">
+                    <input type="text" id="entry-title" class="editor-input title" placeholder="Title..."
+                        data-i18n-placeholder="ph_title">
 
                     <div class="tags-input-container">
                         <i class="ri-hashtag tag-icon"></i>
-                        <input type="text" id="entry-tags" class="editor-input tags" placeholder="Tags..." data-i18n-placeholder="ph_tags">
+                        <input type="text" id="entry-tags" class="editor-input tags" placeholder="Tags..."
+                            data-i18n-placeholder="ph_tags">
                     </div>
 
-                    <textarea id="entry-content" class="editor-input content" placeholder="Write..." data-i18n-placeholder="ph_content"></textarea>
+                    <textarea id="entry-content" class="editor-input content" placeholder="Write..."
+                        data-i18n-placeholder="ph_content"></textarea>
                 </div>
             </div>
         </div>
@@ -243,4 +258,5 @@
         }
     </script>
 </body>
+
 </html>
