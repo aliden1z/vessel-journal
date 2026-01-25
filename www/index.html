@@ -130,8 +130,21 @@
 
                     <div class="setting-item">
                         <div class="setting-info">
+                            <i class="ri-palette-line"></i>
+                            <span data-i18n="settings_theme">Theme</span>
+                        </div>
+                        <select id="theme-select" class="setting-select">
+                            <option value="default">Default (Green)</option>
+                            <option value="ocean">Ocean (Blue)</option>
+                            <option value="sunset">Sunset (Orange)</option>
+                            <option value="lavender">Lavender (Purple)</option>
+                        </select>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
                             <i class="ri-contrast-2-line"></i>
-                            <span data-i18n="settings_theme">Dark Theme</span>
+                            <span data-i18n="settings_dark">Dark Mode</span>
                         </div>
                         <label class="switch">
                             <input type="checkbox" id="theme-switch">
@@ -149,6 +162,8 @@
                             <span class="slider round"></span>
                         </label>
                     </div>
+
+
 
                     <hr class="divider">
 
@@ -217,8 +232,17 @@
                     <div class="tags-input-container">
                         <i class="ri-hashtag tag-icon"></i>
                         <input type="text" id="entry-tags" class="editor-input tags" placeholder="Tags..."
-                            data-i18n-placeholder="ph_tags">
+                            data-i18n-placeholder="ph_tags" list="tag-suggestions">
+                        <datalist id="tag-suggestions"></datalist>
+
+                        <!-- Compact Photo Button -->
+                        <button id="add-photo-btn" class="icon-btn-small" title="Add Photos">
+                            <i class="ri-image-add-line"></i>
+                        </button>
+                        <input type="file" id="image-input" accept="image/*" multiple hidden>
                     </div>
+
+                    <div id="image-preview-container" class="image-preview-container"></div>
 
                     <textarea id="entry-content" class="editor-input content" placeholder="Write..."
                         data-i18n-placeholder="ph_content"></textarea>

@@ -29,6 +29,77 @@
     --transition-speed: 0.3s;
 }
 
+/* --- THEMES --- */
+/* Ocean (Blue/Teal) */
+[data-theme="ocean"] {
+    --primary-color: #48CAE4;
+    --secondary-color: #0077B6;
+    --bg-color: #CAF0F8;
+    --card-bg: #FFFFFF;
+    --text-primary: #03045E;
+    --text-secondary: #0077B6;
+    --border-color: #90E0EF;
+}
+
+/* Sunset (Orange/Pink) */
+[data-theme="sunset"] {
+    --primary-color: #FF9E00;
+    --secondary-color: #FF6D00;
+    --bg-color: #FFECD1;
+    --card-bg: #FFFFFF;
+    --text-primary: #5A189A;
+    --text-secondary: #9D4EDD;
+    --border-color: #FFC6FF;
+}
+
+/* Lavender (Purple) */
+[data-theme="lavender"] {
+    --primary-color: #B5179E;
+    --secondary-color: #7209B7;
+    --bg-color: #F8F7FF;
+    --card-bg: #FFFFFF;
+    --text-primary: #3A0CA3;
+    --text-secondary: #560BAD;
+    --border-color: #E2EAFC;
+}
+
+/* Dark Theme (Override) */
+body.dark-theme {
+    --bg-color: #121212;
+    --card-bg: #1E1E1E;
+    --text-primary: #E0E0E0;
+    --text-secondary: #A0A0A0;
+    --border-color: #333333;
+    --tag-bg: #2C2C32;
+}
+
+/* Dark Theme + Ocean */
+body.dark-theme[data-theme="ocean"] {
+    --bg-color: #0A192F;
+    --card-bg: #112240;
+    --text-primary: #E6F1FF;
+    --text-secondary: #8892B0;
+    --border-color: #233554;
+}
+
+/* Dark Theme + Sunset */
+body.dark-theme[data-theme="sunset"] {
+    --bg-color: #2D1B2E;
+    --card-bg: #442746;
+    --text-primary: #FFECD1;
+    --text-secondary: #D4A5A5;
+    --border-color: #5C3D5E;
+}
+
+/* Dark Theme + Lavender */
+body.dark-theme[data-theme="lavender"] {
+    --bg-color: #1A1A2E;
+    --card-bg: #16213E;
+    --text-primary: #E94560;
+    --text-secondary: #B2B2B2;
+    --border-color: #0F3460;
+}
+
 /* --- BASE --- */
 * {
     box-sizing: border-box;
@@ -727,6 +798,82 @@ body.dark-theme .star-btn {
 
 body.dark-theme .star-btn:hover {
     background: #2C2C32;
+}
+
+/* --- PHOTOS --- */
+.icon-btn-small {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 50%;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-btn-small:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: var(--accent-color);
+}
+
+.image-preview-container {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+}
+
+.image-preview {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+
+.image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-preview .remove-btn {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.card-photos {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 10px;
+    overflow-x: auto;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+
+.card-photo {
+    height: 150px;
+    width: auto;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
 }
 
 /* --- BOTTOM NAVIGATION (Updated for Centering) --- */

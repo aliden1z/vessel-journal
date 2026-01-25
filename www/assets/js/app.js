@@ -7,10 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
             home_empty: "Your story begins here...",
             settings_title: "Preferences",
             settings_lang: "Language",
-            settings_theme: "Dark Theme",
+            settings_theme: "Theme",
             settings_pin: "App Lock (PIN)",
             settings_backup: "Backup & Restore",
             settings_clear: "Clear All Data",
+
             stats_moods: "Mood Overview",
             stats_calendar: "Calendar",
             otd_title: "On This Day",
@@ -33,18 +34,21 @@ document.addEventListener('DOMContentLoaded', () => {
             alert_exported: "Backup downloaded!",
             alert_imported: "Data imported successfully!",
             alert_invalid: "Invalid file format.",
+            ph_photos: "Add Photos",
             prompts: ["What made you smile today?", "What is a lesson you learned recently?", "Describe a moment of peace."],
-            moods: { happy: "Happy", calm: "Calm", sad: "Sad", excited: "Excited" }
+            moods: { happy: "Happy", calm: "Calm", sad: "Sad", excited: "Excited" },
+            themes: { default: "Default (Green)", ocean: "Ocean (Blue)", sunset: "Sunset (Orange)", lavender: "Lavender (Purple)", dark: "Dark Mode" }
         },
         tr: {
             app_title: "Vessel.",
             home_empty: "Hikayen burada başlıyor...",
             settings_title: "Tercihler",
             settings_lang: "Dil",
-            settings_theme: "Karanlık Mod",
+            settings_theme: "Tema",
             settings_pin: "Uygulama Kilidi (PIN)",
             settings_backup: "Yedekleme",
             settings_clear: "Tüm Verileri Sil",
+
             stats_moods: "Ruh Hali Özeti",
             stats_calendar: "Takvim",
             otd_title: "Tarihte Bugün",
@@ -67,18 +71,21 @@ document.addEventListener('DOMContentLoaded', () => {
             alert_exported: "Yedek indirildi!",
             alert_imported: "Veri yüklendi!",
             alert_invalid: "Geçersiz dosya.",
+            ph_photos: "Fotoğraf Ekle",
             prompts: ["Bugün seni ne gülümsetti?", "Son zamanlarda öğrendiğin bir ders?", "Huzurlu bir anı tarif et."],
-            moods: { happy: "Mutlu", calm: "Sakin", sad: "Üzgün", excited: "Heyecanlı" }
+            moods: { happy: "Mutlu", calm: "Sakin", sad: "Üzgün", excited: "Heyecanlı" },
+            themes: { default: "Varsayılan (Yeşil)", ocean: "Okyanus (Mavi)", sunset: "Gün Batımı (Turuncu)", lavender: "Lavanta (Mor)", dark: "Karanlık Mod" }
         },
         es: {
             app_title: "Vessel.",
             home_empty: "Tu historia comienza aquí...",
             settings_title: "Preferencias",
             settings_lang: "Idioma",
-            settings_theme: "Modo Oscuro",
+            settings_theme: "Tema",
             settings_pin: "Bloqueo de App (PIN)",
             settings_backup: "Respaldo",
             settings_clear: "Borrar Todo",
+
             stats_moods: "Resumen de Ánimo",
             stats_calendar: "Calendario",
             otd_title: "Un Día Como Hoy",
@@ -101,19 +108,22 @@ document.addEventListener('DOMContentLoaded', () => {
             alert_exported: "¡Respaldo descargado!",
             alert_imported: "¡Datos importados!",
             alert_invalid: "Archivo inválido.",
+            ph_photos: "Añadir Fotos",
             prompts: ["¿Qué te hizo sonreír hoy?", "¿Qué lección aprendiste?", "Describe un momento de paz."],
-            moods: { happy: "Feliz", calm: "Calmado", sad: "Triste", excited: "Emocionado" }
+            moods: { happy: "Feliz", calm: "Calmado", sad: "Triste", excited: "Emocionado" },
+            themes: { default: "Por Defecto (Verde)", ocean: "Océano (Azul)", sunset: "Atardecer (Naranja)", lavender: "Lavanda (Morado)", dark: "Modo Oscuro" }
         }
     };
 
     // --- STATE MANAGEMENT ---
     let entries = JSON.parse(localStorage.getItem('vessel_entries')) || [];
-    let settings = JSON.parse(localStorage.getItem('vessel_settings')) || { theme: 'light', lang: 'en', pinEnabled: false, pinCode: null };
+    let settings = JSON.parse(localStorage.getItem('vessel_settings')) || { theme: 'default', darkMode: false, lang: 'en', pinEnabled: false, pinCode: null };
 
     let editingId = null;
     let currentCalendarDate = new Date();
     let pinBuffer = "";
     let showFavoritesOnly = false;
+    let currentPhotos = [];
 
     // --- DOM ELEMENTS ---
     const app = {
@@ -132,6 +142,10 @@ document.addEventListener('DOMContentLoaded', () => {
         inputTitle: document.getElementById('entry-title'),
         inputContent: document.getElementById('entry-content'),
         inputTags: document.getElementById('entry-tags'),
+        tagSuggestions: document.getElementById('tag-suggestions'),
+        imageInput: document.getElementById('image-input'),
+        addPhotoBtn: document.getElementById('add-photo-btn'),
+        imagePreviewContainer: document.getElementById('image-preview-container'),
         searchInput: document.getElementById('search-input'),
         filterFavBtn: document.getElementById('filter-fav-btn'),
         dateDisplay: document.getElementById('current-date'),
@@ -139,8 +153,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Settings
         langSelect: document.getElementById('lang-select'),
+        themeSelect: document.getElementById('theme-select'),
         themeSwitch: document.getElementById('theme-switch'),
         pinSwitch: document.getElementById('pin-switch'),
+
         clearDataBtn: document.getElementById('clear-data-btn'),
         exportBtn: document.getElementById('export-btn'),
         importBtn: document.getElementById('import-btn'),
@@ -176,11 +192,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         applyTheme(settings.theme);
+        toggleDarkMode(settings.darkMode);
         applyLanguage(settings.lang);
 
         app.langSelect.value = settings.lang;
-        app.themeSwitch.checked = (settings.theme === 'dark');
+        app.themeSelect.value = settings.theme;
+        app.themeSwitch.checked = settings.darkMode;
         app.pinSwitch.checked = settings.pinEnabled;
+
 
         renderEntries();
         renderStreak();
@@ -190,6 +209,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initialize Calendar and Stats
         renderCalendar();
         renderMoodChart();
+
+        renderTagSuggestions();
     }
 
     // --- PIN SYSTEM ---
@@ -246,6 +267,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+
+
     // --- LANGUAGE & THEME ---
     function applyLanguage(lang) {
         settings.lang = lang;
@@ -259,6 +282,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const key = el.getAttribute('data-i18n-placeholder');
             if (texts[key]) el.placeholder = texts[key];
         });
+
+        // Update Theme Options
+        if (texts.themes) {
+            Array.from(app.themeSelect.options).forEach(option => {
+                if (texts.themes[option.value]) {
+                    option.textContent = texts.themes[option.value];
+                }
+            });
+        }
+
         updateDateDisplay();
         renderCalendar();
         renderMoodChart(); // Re-render charts to update labels
@@ -272,7 +305,19 @@ document.addEventListener('DOMContentLoaded', () => {
     function applyTheme(theme) {
         settings.theme = theme;
         saveSettings();
-        document.body.classList.toggle('dark-theme', theme === 'dark');
+
+        // Remove old theme attributes
+        document.body.removeAttribute('data-theme');
+
+        if (theme !== 'default') {
+            document.body.setAttribute('data-theme', theme);
+        }
+    }
+
+    function toggleDarkMode(enabled) {
+        settings.darkMode = enabled;
+        saveSettings();
+        document.body.classList.toggle('dark-theme', enabled);
     }
 
     function saveSettings() {
@@ -304,6 +349,8 @@ document.addEventListener('DOMContentLoaded', () => {
             app.inputTitle.value = entry.title;
             app.inputContent.value = entry.content;
             app.inputTags.value = entry.tags ? entry.tags.join(', ') : '';
+            currentPhotos = entry.photos || [];
+            renderImagePreviews();
             document.querySelector(`input[name="mood"][value="${entry.mood}"]`).checked = true;
             app.modalTitle.textContent = i18n[settings.lang].modal_edit;
             app.saveBtn.textContent = i18n[settings.lang].btn_update;
@@ -331,6 +378,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 entries[index].content = content;
                 entries[index].mood = mood;
                 entries[index].tags = tags;
+                entries[index].photos = currentPhotos;
                 // Preserve existing favorite status if any
                 if (entries[index].isFavorite === undefined) entries[index].isFavorite = false;
             }
@@ -341,6 +389,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 content: content,
                 mood: mood,
                 tags: tags,
+                photos: currentPhotos,
                 date: new Date().toISOString(),
                 isFavorite: false
             };
@@ -350,6 +399,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateStorage();
         renderEntries();
         renderStreak();
+        renderTagSuggestions();
         app.modal.classList.remove('active');
     }
 
@@ -370,6 +420,8 @@ document.addEventListener('DOMContentLoaded', () => {
         app.inputTitle.value = '';
         app.inputContent.value = '';
         app.inputTags.value = '';
+        currentPhotos = [];
+        renderImagePreviews();
         document.getElementById('mood-1').checked = true;
     }
 
@@ -403,6 +455,67 @@ document.addEventListener('DOMContentLoaded', () => {
         const text = app.inputContent.value.trim();
         const count = text ? text.split(/\s+/).length : 0;
         app.wordCount.textContent = `${count} words`;
+    }
+
+    // --- PHOTO HANDLING ---
+    function handleImageSelect(e) {
+        const files = Array.from(e.target.files);
+        processFiles(files);
+    }
+
+    function handleImageDrop(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        app.imageDropZone.classList.remove('dragover');
+        const files = Array.from(e.dataTransfer.files).filter(file => file.type.startsWith('image/'));
+        processFiles(files);
+    }
+
+    function processFiles(files) {
+        files.forEach(file => {
+            compressImage(file, (base64) => {
+                currentPhotos.push(base64);
+                renderImagePreviews();
+            });
+        });
+    }
+
+    function compressImage(file, callback) {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = (event) => {
+            const img = new Image();
+            img.src = event.target.result;
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                const MAX_WIDTH = 800;
+                if (img.width > MAX_WIDTH) {
+                    const scaleSize = MAX_WIDTH / img.width;
+                    canvas.width = MAX_WIDTH;
+                    canvas.height = img.height * scaleSize;
+                } else {
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                }
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                callback(canvas.toDataURL('image/jpeg', 0.7));
+            };
+        };
+    }
+
+    function renderImagePreviews() {
+        app.imagePreviewContainer.innerHTML = '';
+        currentPhotos.forEach((photo, index) => {
+            const div = document.createElement('div');
+            div.className = 'image-preview';
+            div.innerHTML = `<img src="${photo}"><button class="remove-btn"><i class="ri-close-line"></i></button>`;
+            div.querySelector('.remove-btn').addEventListener('click', () => {
+                currentPhotos.splice(index, 1);
+                renderImagePreviews();
+            });
+            app.imagePreviewContainer.appendChild(div);
+        });
     }
 
     // --- STATS: MOOD CHART (Localized) ---
@@ -563,6 +676,11 @@ document.addEventListener('DOMContentLoaded', () => {
             tagsHtml = `<div class="card-tags">${entry.tags.map(tag => `<span class="tag-badge">#${escapeHtml(tag)}</span>`).join('')}</div>`;
         }
 
+        let photosHtml = '';
+        if (entry.photos && entry.photos.length > 0) {
+            photosHtml = `<div class="card-photos">${entry.photos.map(photo => `<img src="${photo}" class="card-photo">`).join('')}</div>`;
+        }
+
         const favIconClass = entry.isFavorite ? 'ri-star-fill' : 'ri-star-line';
         const favBtnClass = entry.isFavorite ? 'star-btn active' : 'star-btn';
 
@@ -578,6 +696,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="card-body">
         <h3 class="card-title">${escapeHtml(entry.title)}</h3>
         <div class="card-preview">${parseMarkdown(entry.content)}</div>
+        ${photosHtml}
         ${tagsHtml}
         </div>
         `;
@@ -589,6 +708,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const div = document.createElement('div');
         div.textContent = text;
         return div.innerHTML;
+    }
+
+    function getAllTags() {
+        const tags = new Set();
+        entries.forEach(entry => {
+            if (entry.tags) entry.tags.forEach(tag => tags.add(tag));
+        });
+        return Array.from(tags).sort();
+    }
+
+    function renderTagSuggestions() {
+        const tags = getAllTags();
+        app.tagSuggestions.innerHTML = tags.map(tag => `<option value="${tag}">`).join('');
     }
 
     function exportData() {
@@ -647,10 +779,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         app.inputContent.addEventListener('input', updateWordCount);
 
+        // Image Listeners
+        app.imageInput.addEventListener('change', handleImageSelect);
+        app.addPhotoBtn.addEventListener('click', () => app.imageInput.click());
+
         app.langSelect.addEventListener('change', (e) => applyLanguage(e.target.value));
-        app.themeSwitch.addEventListener('change', (e) => applyTheme(e.target.checked ? 'dark' : 'light'));
+        app.themeSelect.addEventListener('change', (e) => applyTheme(e.target.value));
+        app.themeSwitch.addEventListener('change', (e) => toggleDarkMode(e.target.checked));
 
         app.pinSwitch.addEventListener('change', (e) => togglePinSetting(e.target.checked));
+        app.reminderSwitch.addEventListener('change', (e) => toggleReminders(e.target.checked));
         app.pinKeypad.addEventListener('click', (e) => {
             const btn = e.target.closest('button');
             if (btn && !btn.classList.contains('empty')) {
