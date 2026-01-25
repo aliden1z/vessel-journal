@@ -167,6 +167,8 @@
 
                     <hr class="divider">
 
+
+
                     <h2 class="settings-title" data-i18n="settings_backup">Backup</h2>
 
                     <button id="export-btn" class="action-btn">
@@ -240,6 +242,26 @@
                             <i class="ri-image-add-line"></i>
                         </button>
                         <input type="file" id="image-input" accept="image/*" multiple hidden>
+                    </div>
+
+
+
+                    <!-- Time Capsule Section -->
+                    <div class="editor-section">
+                        <div class="time-capsule-toggle">
+                            <label class="switch-label">
+                                <i class="ri-time-line"></i>
+                                <span data-i18n="lbl_time_capsule">Time Capsule</span>
+                            </label>
+                            <label class="switch">
+                                <input type="checkbox" id="capsule-switch">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div id="capsule-date-container" class="hidden mt-2">
+                            <label data-i18n="lbl_lock_until">Lock until:</label>
+                            <input type="date" id="capsule-date" class="editor-input">
+                        </div>
                     </div>
 
                     <div id="image-preview-container" class="image-preview-container"></div>

@@ -37,7 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
             ph_photos: "Add Photos",
             prompts: ["What made you smile today?", "What is a lesson you learned recently?", "Describe a moment of peace."],
             moods: { happy: "Happy", calm: "Calm", sad: "Sad", excited: "Excited" },
-            themes: { default: "Default (Green)", ocean: "Ocean (Blue)", sunset: "Sunset (Orange)", lavender: "Lavender (Purple)", dark: "Dark Mode" }
+            themes: { default: "Default (Green)", ocean: "Ocean (Blue)", sunset: "Sunset (Orange)", lavender: "Lavender (Purple)", dark: "Dark Mode" },
+
+            lbl_time_capsule: "Time Capsule",
+            lbl_lock_until: "Lock until:",
+            msg_locked: "Locked until",
+            msg_locked_desc: "This memory is sealed in a time capsule."
         },
         tr: {
             app_title: "Vessel.",
@@ -74,7 +79,12 @@ document.addEventListener('DOMContentLoaded', () => {
             ph_photos: "Fotoğraf Ekle",
             prompts: ["Bugün seni ne gülümsetti?", "Son zamanlarda öğrendiğin bir ders?", "Huzurlu bir anı tarif et."],
             moods: { happy: "Mutlu", calm: "Sakin", sad: "Üzgün", excited: "Heyecanlı" },
-            themes: { default: "Varsayılan (Yeşil)", ocean: "Okyanus (Mavi)", sunset: "Gün Batımı (Turuncu)", lavender: "Lavanta (Mor)", dark: "Karanlık Mod" }
+            themes: { default: "Varsayılan (Yeşil)", ocean: "Okyanus (Mavi)", sunset: "Gün Batımı (Turuncu)", lavender: "Lavanta (Mor)", dark: "Karanlık Mod" },
+
+            lbl_time_capsule: "Zaman Kapsülü",
+            lbl_lock_until: "Kilit tarihi:",
+            msg_locked: "Kilitli",
+            msg_locked_desc: "Bu anı bir zaman kapsülünde saklı."
         },
         es: {
             app_title: "Vessel.",
@@ -111,7 +121,12 @@ document.addEventListener('DOMContentLoaded', () => {
             ph_photos: "Añadir Fotos",
             prompts: ["¿Qué te hizo sonreír hoy?", "¿Qué lección aprendiste?", "Describe un momento de paz."],
             moods: { happy: "Feliz", calm: "Calmado", sad: "Triste", excited: "Emocionado" },
-            themes: { default: "Por Defecto (Verde)", ocean: "Océano (Azul)", sunset: "Atardecer (Naranja)", lavender: "Lavanda (Morado)", dark: "Modo Oscuro" }
+            themes: { default: "Por Defecto (Verde)", ocean: "Océano (Azul)", sunset: "Atardecer (Naranja)", lavender: "Lavanda (Morado)", dark: "Modo Oscuro" },
+
+            lbl_time_capsule: "Cápsula del Tiempo",
+            lbl_lock_until: "Bloquear hasta:",
+            msg_locked: "Bloqueado hasta",
+            msg_locked_desc: "Este recuerdo está sellado."
         }
     };
 
@@ -162,6 +177,12 @@ document.addEventListener('DOMContentLoaded', () => {
         importBtn: document.getElementById('import-btn'),
         importFile: document.getElementById('import-file'),
 
+        // Habits & Capsule
+        // Capsule
+        capsuleSwitch: document.getElementById('capsule-switch'),
+        capsuleDateContainer: document.getElementById('capsule-date-container'),
+        capsuleDate: document.getElementById('capsule-date'),
+
         // UI
         entryList: document.getElementById('entry-list'),
         emptyState: document.getElementById('empty-state'),
@@ -204,6 +225,8 @@ document.addEventListener('DOMContentLoaded', () => {
         renderEntries();
         renderStreak();
         renderOnThisDay();
+
+        setupEventListeners();
         setupEventListeners();
 
         // Initialize Calendar and Stats
@@ -351,11 +374,27 @@ document.addEventListener('DOMContentLoaded', () => {
             app.inputTags.value = entry.tags ? entry.tags.join(', ') : '';
             currentPhotos = entry.photos || [];
             renderImagePreviews();
+            renderImagePreviews();
             document.querySelector(`input[name="mood"][value="${entry.mood}"]`).checked = true;
+
+
+
+            // Time Capsule
+            if (entry.lockDate) {
+                app.capsuleSwitch.checked = true;
+                app.capsuleDateContainer.classList.remove('hidden');
+                app.capsuleDate.value = entry.lockDate.split('T')[0];
+            } else {
+                app.capsuleSwitch.checked = false;
+                app.capsuleDateContainer.classList.add('hidden');
+                app.capsuleDate.value = '';
+            }
+
             app.modalTitle.textContent = i18n[settings.lang].modal_edit;
             app.saveBtn.textContent = i18n[settings.lang].btn_update;
         } else {
             editingId = null;
+            resetForm();
             resetForm();
             app.modalTitle.textContent = i18n[settings.lang].modal_new;
             app.saveBtn.textContent = i18n[settings.lang].btn_save;
@@ -367,7 +406,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const title = app.inputTitle.value.trim();
         const content = app.inputContent.value.trim();
         const tags = app.inputTags.value.trim().split(',').map(t => t.trim()).filter(t => t.length > 0);
+
         const mood = document.querySelector('input[name="mood"]:checked').value;
+
+
+
+        // Time Capsule
+        let lockDate = null;
+        if (app.capsuleSwitch.checked && app.capsuleDate.value) {
+            lockDate = new Date(app.capsuleDate.value).toISOString();
+        }
 
         if (!title && !content) return;
 
@@ -378,7 +426,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 entries[index].content = content;
                 entries[index].mood = mood;
                 entries[index].tags = tags;
+                entries[index].mood = mood;
+                entries[index].tags = tags;
                 entries[index].photos = currentPhotos;
+                entries[index].photos = currentPhotos;
+                entries[index].lockDate = lockDate;
+                entries[index].lockDate = lockDate;
                 // Preserve existing favorite status if any
                 if (entries[index].isFavorite === undefined) entries[index].isFavorite = false;
             }
@@ -389,7 +442,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 content: content,
                 mood: mood,
                 tags: tags,
+                mood: mood,
+                tags: tags,
                 photos: currentPhotos,
+                photos: currentPhotos,
+                lockDate: lockDate,
+                lockDate: lockDate,
                 date: new Date().toISOString(),
                 isFavorite: false
             };
@@ -422,6 +480,11 @@ document.addEventListener('DOMContentLoaded', () => {
         app.inputTags.value = '';
         currentPhotos = [];
         renderImagePreviews();
+        currentPhotos = [];
+        renderImagePreviews();
+        app.capsuleSwitch.checked = false;
+        app.capsuleDateContainer.classList.add('hidden');
+        app.capsuleDate.value = '';
         document.getElementById('mood-1').checked = true;
     }
 
@@ -662,23 +725,54 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function createCardElement(entry) {
+        const now = new Date();
         const dateObj = new Date(entry.date);
         const day = dateObj.getDate();
         const month = dateObj.toLocaleString(settings.lang === 'en' ? 'en-US' : settings.lang, { month: 'short' });
         const moodIcons = { 'happy': 'ri-emotion-happy-line', 'calm': 'ri-emotion-normal-line', 'sad': 'ri-emotion-sad-line', 'excited': 'ri-emotion-line' };
 
+        // Check Lock Status
+        let isLocked = false;
+        let lockDateStr = '';
+        if (entry.lockDate) {
+            const unlockTime = new Date(entry.lockDate);
+            if (now < unlockTime) {
+                isLocked = true;
+                lockDateStr = unlockTime.toLocaleDateString();
+            }
+        }
+
         const article = document.createElement('article');
-        article.className = 'journal-card';
+        article.className = `journal-card ${isLocked ? 'locked-entry' : ''}`;
         article.dataset.id = entry.id;
 
         let tagsHtml = '';
-        if (entry.tags && entry.tags.length > 0) {
+        if (!isLocked && entry.tags && entry.tags.length > 0) {
             tagsHtml = `<div class="card-tags">${entry.tags.map(tag => `<span class="tag-badge">#${escapeHtml(tag)}</span>`).join('')}</div>`;
         }
 
         let photosHtml = '';
-        if (entry.photos && entry.photos.length > 0) {
+        if (!isLocked && entry.photos && entry.photos.length > 0) {
             photosHtml = `<div class="card-photos">${entry.photos.map(photo => `<img src="${photo}" class="card-photo">`).join('')}</div>`;
+        }
+
+
+
+        // Content Logic
+        let contentHtml = '';
+        let titleHtml = escapeHtml(entry.title);
+
+        if (isLocked) {
+            titleHtml = "???";
+            contentHtml = `
+                <div class="locked-content">
+                    <i class="ri-lock-2-line"></i>
+                    <p>${i18n[settings.lang].msg_locked} ${lockDateStr}</p>
+                    <small>${i18n[settings.lang].msg_locked_desc}</small>
+                </div>
+            `;
+        } else {
+            contentHtml = `<div class="card-preview">${parseMarkdown(entry.content)}</div>`;
         }
 
         const favIconClass = entry.isFavorite ? 'ri-star-fill' : 'ri-star-line';
@@ -689,17 +783,39 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="card-header">
         <span class="card-date"><span class="day">${day}</span><span class="month">${month}</span></span>
         <div class="card-actions">
-        <div class="card-mood"><i class="${moodIcons[entry.mood]}"></i></div>
+        <div class="card-mood"><i class="${moodIcons[entry.mood] || 'ri-emotion-line'}"></i></div>
+        ${!isLocked ? `<button class="edit-btn"><i class="ri-pencil-line"></i></button>` : ''}
         <button class="delete-btn"><i class="ri-delete-bin-line"></i></button>
         </div>
         </div>
         <div class="card-body">
-        <h3 class="card-title">${escapeHtml(entry.title)}</h3>
-        <div class="card-preview">${parseMarkdown(entry.content)}</div>
+        <h3 class="card-title">${titleHtml}</h3>
+        ${contentHtml}
         ${photosHtml}
+
         ${tagsHtml}
         </div>
         `;
+
+        // Event Listeners
+        if (!isLocked) {
+            article.querySelector('.edit-btn').addEventListener('click', (e) => {
+                e.stopPropagation();
+                openModal(entry);
+            });
+            article.addEventListener('click', () => openModal(entry));
+        }
+
+        article.querySelector('.star-btn').addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleFavorite(entry.id);
+        });
+
+        article.querySelector('.delete-btn').addEventListener('click', (e) => {
+            e.stopPropagation();
+            deleteEntry(entry.id);
+        });
+
         return article;
     }
 
@@ -788,7 +904,11 @@ document.addEventListener('DOMContentLoaded', () => {
         app.themeSwitch.addEventListener('change', (e) => toggleDarkMode(e.target.checked));
 
         app.pinSwitch.addEventListener('change', (e) => togglePinSetting(e.target.checked));
-        app.reminderSwitch.addEventListener('change', (e) => toggleReminders(e.target.checked));
+
+        // Capsule Listeners
+        app.capsuleSwitch.addEventListener('change', (e) => {
+            app.capsuleDateContainer.classList.toggle('hidden', !e.target.checked);
+        });
         app.pinKeypad.addEventListener('click', (e) => {
             const btn = e.target.closest('button');
             if (btn && !btn.classList.contains('empty')) {
@@ -817,7 +937,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     toggleFavorite(card.dataset.id);
                 } else {
                     const entry = entries.find(en => en.id === Number(card.dataset.id));
-                    if (entry) openModal(entry);
+                    if (entry) {
+                        if (entry.lockDate && new Date() < new Date(entry.lockDate)) return;
+                        openModal(entry);
+                    }
                 }
             }
         });
@@ -838,3 +961,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     init();
 });
+
+
