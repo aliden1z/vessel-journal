@@ -1,14 +1,14 @@
 {
   "name": "vessel-journal",
-  "version": "1.0.0",
-  "description": "Modern Journal App",
+  "version": "1.0.3",
+  "description": "Modern journaling and note-taking app",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
     "dist": "electron-builder"
   },
   "author": "aliden1z",
-  "license": "ISC",
+  "license": "GPL-3.0-or-later",
   "build": {
     "appId": "com.vessel.journal",
     "directories": {
